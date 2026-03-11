@@ -69,24 +69,7 @@ nav {
 }
 .nav-center a:hover { color: var(--gold); }
 
-/* lang button sits on the right, balanced with logo on left */
-.lang-btn {
-  background: transparent;
-  border: 1px solid rgba(201,168,76,0.3);
-  color: var(--gold);
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 0.45rem 0.9rem;
-  cursor: pointer;
-  transition: background 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  flex-shrink: 0;
-}
-.lang-btn:hover { background: var(--gold-soft); }
+.nav-placeholder { width: 80px; flex-shrink: 0; }
 
 /* ── HERO ── */
 #hero {
@@ -547,17 +530,14 @@ footer p {
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo" data-en="THE CIRCLE" data-mm="THE CIRCLE">THE CIRCLE</a>
+  <a href="#" class="nav-logo">THE CIRCLE</a>
   <ul class="nav-center">
-    <li><a href="#vision" data-en="Vision" data-mm="ရည်မှန်းချက်">Vision</a></li>
-    <li><a href="#values" data-en="Values" data-mm="တန်ဖိုးများ">Values</a></li>
-    <li><a href="#formats" data-en="Experience" data-mm="အတွေ့အကြုံ">Experience</a></li>
-    <li><a href="#join" data-en="Join" data-mm="ပါဝင်ရန်">Join</a></li>
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#values">Values</a></li>
+    <li><a href="#formats">Experience</a></li>
+    <li><a href="#join">Join</a></li>
   </ul>
-  <button class="lang-btn" onclick="toggleLang()">
-    <span id="langFlag">🇲🇲</span>
-    <span id="langLabel">Myanmar</span>
-  </button>
+  <div class="nav-placeholder"></div>
 </nav>
 
 <!-- HERO -->
@@ -572,7 +552,7 @@ footer p {
   <p class="hero-sub" data-en="A space for men who sense there is more — to life, to themselves, to what is possible." data-mm="ဘဝတွင် ထပ်မံခံစားရစရာများ ရှိသေးကြောင်း ခံစားမိသော ယောင်္ကျားများအတွက် နေရာတစ်ခု။">A space for men who sense there is more — to life, to themselves, to what is possible.</p>
   <div class="hero-cta">
     <a href="#join" class="btn btn-solid" data-en="Request Invitation" data-mm="လျှောက်ထားရန်">Request Invitation</a>
-    <a href="#vision" class="btn btn-ghost" data-en="Our Vision" data-mm="ကျွန်ုပ်တို့၏ ရည်မှန်းချက်">Our Vision</a>
+    <a href="#vision" class="btn btn-ghost">Our Purpose</a>
   </div>
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
@@ -708,14 +688,10 @@ footer p {
 <!-- JOIN -->
 <div class="section-wrap" id="join" style="text-align:center;">
   <div class="reveal">
-    <span class="s-label" data-en="Join The Circle" data-mm="The Circle သို့ ပါဝင်ပါ">Join The Circle</span>
-    <h2 class="s-title" data-en="The room is waiting." data-mm="အခန်းသည် စောင့်နေသည်။">The room is waiting.</h2>
-    <p class="s-body" style="max-width:400px; margin: 0 auto 2.5rem;" data-en="Invitation only. Small groups. Leave your email and we will reach out when the next circle opens." data-mm="ဖိတ်ကြားချက်ဖြင့်သာ ဝင်ခွင့်ရှိသည်။ အုပ်စုငယ်များ။ သင်၏ email ထားခဲ့ပါ။">Invitation only. Small groups. Leave your email and we will reach out when the next circle opens.</p>
-    <div class="join-form">
-      <input type="email" id="emailInput" placeholder="your@email.com">
-      <button onclick="handleJoin(this)" data-en="Request" data-mm="လျှောက်ရန်">Request</button>
-    </div>
-    <p class="join-note" data-en="Invitation only · No spam" data-mm="ဖိတ်ကြားချက်ဖြင့်သာ · Spam မရှိ">Invitation only · No spam</p>
+    <span class="s-label">Join The Circle</span>
+    <h2 class="s-title">The room is waiting.</h2>
+    <p class="s-body" style="max-width:400px; margin: 0 auto 2.5rem;">Gatherings are small and by invitation only. Request your place and we will be in touch.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfi9kPsQ3Ev-nYezyHnkA7icEqUYip34GcwZkYZ4rZ_IkHcHg/viewform?usp=publish-editor" target="_blank" class="btn btn-solid" style="font-size:0.65rem; padding: 1.1rem 3rem;">Request Invitation</a>
   </div>
 </div>
 
