@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Circle</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #c9a84c;
+  --gold-soft: rgba(201,168,76,0.15);
+  --black: #080807;
+  --black-2: #0f0e0c;
+  --cream: #f2ead8;
+  --cream-dim: rgba(242,234,216,0.52);
+  --cream-faint: rgba(242,234,216,0.18);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.6rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(8,8,7,0.97), transparent);
+}
+
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.32em;
+  color: var(--gold);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-center {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-center a {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-center a:hover { color: var(--gold); }
+
+/* lang button sits on the right, balanced with logo on left */
+.lang-btn {
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+.lang-btn:hover { background: var(--gold-soft); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 7rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-rings {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  animation: breathe 7s ease-in-out infinite;
+}
+.ring:nth-child(1) { width: 240px; height: 240px; border: 1px solid rgba(201,168,76,0.14); animation-delay: 0s; }
+.ring:nth-child(2) { width: 460px; height: 460px; border: 1px solid rgba(201,168,76,0.08); animation-delay: 1.5s; }
+.ring:nth-child(3) { width: 700px; height: 700px; border: 1px solid rgba(201,168,76,0.04); animation-delay: 3s; }
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.03); opacity: 0.55; }
+}
+
+.hero-eyebrow {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: rise 1s ease 0.3s forwards;
+}
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(3.8rem, 12vw, 9rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  color: var(--cream);
+  opacity: 0;
+  animation: rise 1.2s ease 0.6s forwards;
+}
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream-dim);
+  max-width: 460px;
+  line-height: 1.85;
+  margin-top: 1.8rem;
+  opacity: 0;
+  animation: rise 1s ease 0.9s forwards;
+}
+.hero-cta {
+  margin-top: 3rem;
+  opacity: 0;
+  animation: rise 1s ease 1.1s forwards;
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.btn {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.9rem 2.2rem;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-solid { background: var(--gold); color: var(--black); }
+.btn-solid:hover { background: #d9b85c; }
+.btn-ghost { border: 1px solid rgba(201,168,76,0.32); color: var(--gold); }
+.btn-ghost:hover { border-color: var(--gold); background: var(--gold-soft); }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: rise 1s ease 1.6s forwards;
+}
+.hero-scroll span {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+}
+.hero-scroll-line { width: 1px; height: 38px; background: linear-gradient(to bottom, var(--gold), transparent); }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ── FINE DIVIDER ── */
+.hr {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 160px;
+  margin: 0 auto;
+  padding: 4.5rem 2rem;
+}
+.hr-line { flex: 1; height: 1px; background: rgba(201,168,76,0.18); }
+.hr-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); opacity: 0.45; }
+
+/* ── SECTIONS ── */
+.section-wrap {
+  padding: 5rem 2rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.section-wrap.bg-alt {
+  max-width: 100%;
+  background: var(--black-2);
+  padding: 5rem 2rem;
+}
+.section-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.s-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 1.1rem;
+}
+.s-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  color: var(--cream);
+  margin-bottom: 1.8rem;
+}
+.s-body {
+  font-size: clamp(1.05rem, 2vw, 1.18rem);
+  font-weight: 300;
+  line-height: 1.95;
+  color: var(--cream-dim);
+}
+
+/* ── WHO WE SERVE IDEAS ── */
+.ideas-list {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+.idea-row {
+  display: flex;
+  gap: 1.8rem;
+  align-items: flex-start;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid rgba(201,168,76,0.06);
+}
+.idea-mark {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: rgba(201,168,76,0.28);
+  flex-shrink: 0;
+  padding-top: 0.25rem;
+}
+.idea-row p {
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--cream-dim);
+  font-style: italic;
+}
+.idea-row strong {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--cream);
+}
+
+/* ── VALUES GRID ── */
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5px;
+  margin-top: 3rem;
+}
+.val {
+  background: var(--black);
+  padding: 2.4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.val::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.28), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+.val:hover::after { transform: scaleX(1); }
+.val-num {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: rgba(201,168,76,0.28);
+  display: block;
+  margin-bottom: 0.9rem;
+}
+.val h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 0.7rem;
+}
+.val p {
+  font-size: 0.98rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--cream-dim);
+}
+
+/* ── TOPICS ── */
+.topics-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 2.8rem;
+}
+.topic-tag {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  border: 1px solid rgba(242,234,216,0.12);
+  padding: 0.45rem 1.1rem;
+  transition: border-color 0.3s, color 0.3s;
+}
+.topic-tag:hover { border-color: rgba(201,168,76,0.4); color: var(--gold); }
+
+/* ── FORMATS ── */
+.formats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  margin-top: 3rem;
+}
+.fmt {
+  background: var(--black-2);
+  padding: 2.4rem 2rem;
+  position: relative;
+}
+.fmt::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+.fmt:hover::before { transform: scaleX(1); }
+.fmt-icon { font-size: 1.3rem; display: block; margin-bottom: 1.1rem; }
+.fmt h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  color: var(--cream);
+  margin-bottom: 0.7rem;
+}
+.fmt p { font-size: 0.95rem; font-weight: 300; line-height: 1.85; color: var(--cream-dim); }
+.fmt-freq {
+  margin-top: 1.2rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.38);
+}
+
+/* ── QUOTE ── */
+#quote {
+  text-align: center;
+  padding: 5rem 2rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+#quote blockquote {
+  font-size: clamp(1.15rem, 2.8vw, 1.75rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--cream);
+  position: relative;
+}
+#quote blockquote::before {
+  content: '\201C';
+  font-size: 5rem;
+  color: var(--gold);
+  opacity: 0.13;
+  position: absolute;
+  top: -1.8rem; left: -1rem;
+  line-height: 1;
+}
+#quote cite {
+  display: block;
+  margin-top: 2rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* ── JOIN ── */
+#join { text-align: center; }
+#join .s-title { font-size: clamp(2rem, 6vw, 4rem); }
+#join .s-body { max-width: 420px; margin: 0 auto 2.5rem; }
+.join-form {
+  display: flex;
+  max-width: 400px;
+  margin: 0 auto 1rem;
+}
+.join-form input {
+  flex: 1;
+  background: var(--black-2);
+  border: 1px solid rgba(201,168,76,0.18);
+  border-right: none;
+  color: var(--cream);
+  padding: 0.95rem 1.2rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.75rem;
+  outline: none;
+  transition: border-color 0.3s;
+  min-width: 0;
+}
+.join-form input::placeholder { color: rgba(242,234,216,0.22); }
+.join-form input:focus { border-color: rgba(201,168,76,0.45); }
+.join-form button {
+  background: var(--gold);
+  border: none;
+  color: var(--black);
+  padding: 0.95rem 1.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.join-form button:hover { background: #d9b85c; }
+.join-note {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(242,234,216,0.18);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black-2);
+  border-top: 1px solid rgba(201,168,76,0.07);
+  padding: 2.8rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.footer-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242,234,216,0.28);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--gold); }
+footer p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(242,234,216,0.16);
+}
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.85s ease, transform 0.85s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.22s; }
+.d3 { transition-delay: 0.34s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  nav { padding: 1.3rem 1.5rem; }
+  .nav-center { display: none; }
+  .values-grid, .formats-grid { grid-template-columns: 1fr; }
+  .section-wrap { padding: 3.5rem 1.5rem; }
+  .section-wrap.bg-alt { padding: 3.5rem 1.5rem; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .join-form { flex-direction: column; }
+  .join-form input { border-right: 1px solid rgba(201,168,76,0.18); border-bottom: none; }
+}
+
+@media (min-width: 701px) and (max-width: 960px) {
+  .nav-center { gap: 1.4rem; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .formats-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" data-en="THE CIRCLE" data-mm="THE CIRCLE">THE CIRCLE</a>
+  <ul class="nav-center">
+    <li><a href="#vision" data-en="Vision" data-mm="ရည်မှန်းချက်">Vision</a></li>
+    <li><a href="#values" data-en="Values" data-mm="တန်ဖိုးများ">Values</a></li>
+    <li><a href="#formats" data-en="Experience" data-mm="အတွေ့အကြုံ">Experience</a></li>
+    <li><a href="#join" data-en="Join" data-mm="ပါဝင်ရန်">Join</a></li>
+  </ul>
+  <button class="lang-btn" onclick="toggleLang()">
+    <span id="langFlag">🇲🇲</span>
+    <span id="langLabel">Myanmar</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-rings">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+  </div>
+  <p class="hero-eyebrow" data-en="theonecircle.club" data-mm="theonecircle.club">theonecircle.club</p>
+  <h1 class="hero-title">THE CIRCLE</h1>
+  <p class="hero-sub" data-en="A space for men who sense there is more — to life, to themselves, to what is possible." data-mm="ဘဝတွင် ထပ်မံခံစားရစရာများ ရှိသေးကြောင်း ခံစားမိသော ယောင်္ကျားများအတွက် နေရာတစ်ခု။">A space for men who sense there is more — to life, to themselves, to what is possible.</p>
+  <div class="hero-cta">
+    <a href="#join" class="btn btn-solid" data-en="Request Invitation" data-mm="လျှောက်ထားရန်">Request Invitation</a>
+    <a href="#vision" class="btn btn-ghost" data-en="Our Vision" data-mm="ကျွန်ုပ်တို့၏ ရည်မှန်းချက်">Our Vision</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span data-en="Scroll" data-mm="အောက်သို့">Scroll</span>
+  </div>
+</section>
+
+<!-- VISION -->
+<div class="section-wrap" id="vision">
+  <div class="reveal">
+    <span class="s-label" data-en="The Vision" data-mm="ရည်မှန်းချက်">The Vision</span>
+    <h2 class="s-title" data-en="Not an event. A way of being." data-mm="ပွဲတစ်ခုမဟုတ်။ ဘဝနေထိုင်ပုံ တစ်ခု။">Not an event. A way of being.</h2>
+    <p class="s-body" data-en="The Circle exists to create a space where men can be real. No performance. No hierarchy. We gather in small numbers with intention — to speak honestly, grow together, and live more fully. God is at the center. Brotherhood is the result." data-mm="The Circle သည် ယောင်္ကျားများ မှန်ကန်စွာနေနိုင်မည့် နေရာတစ်ခု ဖန်တီးရန် တည်ရှိသည်။ မျက်နှာဖုံးများ မရှိ။ အဆင့်အတန်း မရှိ။ ကျွန်ုပ်တို့သည် ရည်ရွယ်ချက်ဖြင့် နည်းပါးသောအုပ်စုများဖြင့် စုဝေးကြသည်။ ဘုရားသည် အလယ်ဗဟိုဖြစ်သည်။ ညီနောင်ရေးသည် ရလဒ်ဖြစ်သည်။">The Circle exists to create a space where men can be real. No performance. No hierarchy. We gather in small numbers with intention — to speak honestly, grow together, and live more fully. God is at the center. Brotherhood is the result.</p>
+  </div>
+
+  <div class="ideas-list reveal d1">
+    <div class="idea-row">
+      <div class="idea-mark">—</div>
+      <p data-en="<strong>No hierarchy.</strong> We are all learners and teachers. No one stands above anyone." data-mm="<strong>အဆင့်အတန်း မရှိ။</strong> ကျွန်ုပ်တို့ အားလုံးသည် သင်ယူသူများနှင့် သင်ကြားသူများဖြစ်သည်။"><strong>No hierarchy.</strong> We are all learners and teachers. No one stands above anyone.</p>
+    </div>
+    <div class="idea-row">
+      <div class="idea-mark">—</div>
+      <p data-en="<strong>Give more than you take.</strong> We believe you receive more by giving more." data-mm="<strong>ယူသည်ထက် ပိုပေးပါ။</strong> ပိုမိုပေးခြင်းဖြင့် ပိုမိုရရှိသည်ဟု ကျွန်ုပ်တို့ ယုံကြည်သည်။"><strong>Give more than you take.</strong> We believe you receive more by giving more.</p>
+    </div>
+    <div class="idea-row">
+      <div class="idea-mark">—</div>
+      <p data-en="<strong>The moment is the point.</strong> Not the event — what happens inside it." data-mm="<strong>လက်ရှိအချိန်သည် အဓိကဖြစ်သည်။</strong> ပွဲမဟုတ် — ထိုပွဲ၏ အတွင်းမှ ဖြစ်ပေါ်သည့်အရာ။"><strong>The moment is the point.</strong> Not the event — what happens inside it.</p>
+    </div>
+    <div class="idea-row">
+      <div class="idea-mark">—</div>
+      <p data-en="<strong>Freedom is sacred.</strong> Go where life takes you. No walls, no cages." data-mm="<strong>လွတ်လပ်မှုသည် သန့်ရှင်းသည်။</strong> ဘဝပေးသောနေရာသို့ သွားပါ။ နံရံမရှိ၊ လှောင်ခြင်းမရှိ။"><strong>Freedom is sacred.</strong> Go where life takes you. No walls, no cages.</p>
+    </div>
+    <div class="idea-row">
+      <div class="idea-mark">—</div>
+      <p data-en="<strong>You shape it too.</strong> This community belongs to everyone inside it." data-mm="<strong>သင်လည်း ဖန်တီးနိုင်သည်။</strong> ဤ community သည် အတွင်းရှိ အားလုံးပိုင်ဆိုင်သည်။"><strong>You shape it too.</strong> This community belongs to everyone inside it.</p>
+    </div>
+  </div>
+</div>
+
+<div class="hr"><div class="hr-line"></div><div class="hr-dot"></div><div class="hr-line"></div></div>
+
+<!-- VALUES -->
+<div class="section-wrap bg-alt" id="values">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="s-label" data-en="Core Values" data-mm="အဓိကတန်ဖိုးများ">Core Values</span>
+      <h2 class="s-title" data-en="What we stand for." data-mm="ကျွန်ုပ်တို့ ဘာများကို ရပ်တည်ကြသနည်း။">What we stand for.</h2>
+    </div>
+    <div class="values-grid">
+      <div class="val reveal">
+        <span class="val-num">01</span>
+        <h3 data-en="Authenticity" data-mm="စစ်မှန်မှု">Authenticity</h3>
+        <p data-en="Being real this moment. Truth above all. You show up as you are." data-mm="ဤအချိန်တွင် မှန်ကန်စွာ နေပါ။ အရာအားလုံးထက် သမ္မာတရား။ သင်ဖြစ်သည့်အတိုင်း ပေါ်လာပါ။">Being real this moment. Truth above all. You show up as you are.</p>
+      </div>
+      <div class="val reveal d1">
+        <span class="val-num">02</span>
+        <h3 data-en="Freedom" data-mm="လွတ်လပ်မှု">Freedom</h3>
+        <p data-en="Go with life. Be free. Follow the path that calls you — even beyond The Circle." data-mm="ဘဝနှင့်အတူ သွားပါ။ လွတ်လပ်ပါ။ သင့်ကို ခေါ်သောလမ်းကို လိုက်ပါ။">Go with life. Be free. Follow the path that calls you — even beyond The Circle.</p>
+      </div>
+      <div class="val reveal d2">
+        <span class="val-num">03</span>
+        <h3 data-en="Growth" data-mm="ကြီးထွားမှု">Growth</h3>
+        <p data-en="Grow by helping people grow. We rise together. The more you give, the more you receive." data-mm="လူများ ကြီးထွားရန် ကူညီခြင်းဖြင့် ကြီးထွားပါ။ ကျွန်ုပ်တို့ အတူတကွ တက်ကြွသည်။">Grow by helping people grow. We rise together. The more you give, the more you receive.</p>
+      </div>
+    </div>
+
+    <!-- TOPICS -->
+    <div class="reveal" style="margin-top: 3.5rem;">
+      <span class="s-label" data-en="We talk about" data-mm="ကျွန်ုပ်တို့ ဆွေးနွေးသည်">We talk about</span>
+      <div class="topics-wrap">
+        <span class="topic-tag" data-en="Masculinity" data-mm="ယောင်္ကျားဆန်မှု">Masculinity</span>
+        <span class="topic-tag" data-en="Spirituality" data-mm="ဝိညာဉ်ရေး">Spirituality</span>
+        <span class="topic-tag" data-en="God" data-mm="ဘုရား">God</span>
+        <span class="topic-tag" data-en="Life" data-mm="ဘဝ">Life</span>
+        <span class="topic-tag" data-en="Love" data-mm="ချစ်ခြင်းမေတ္တာ">Love</span>
+        <span class="topic-tag" data-en="Belief" data-mm="ယုံကြည်ချက်">Belief</span>
+        <span class="topic-tag" data-en="Truth" data-mm="သမ္မာတရား">Truth</span>
+        <span class="topic-tag" data-en="Communication" data-mm="ဆက်သွယ်ရေး">Communication</span>
+        <span class="topic-tag" data-en="Self-Improvement" data-mm="ကိုယ်ကျင့်တရား">Self-Improvement</span>
+        <span class="topic-tag" data-en="Growth" data-mm="တိုးတက်မှု">Growth</span>
+        <span class="topic-tag" data-en="Business" data-mm="စီးပွားရေး">Business</span>
+        <span class="topic-tag" data-en="Relationships" data-mm="ဆက်ဆံရေး">Relationships</span>
+        <span class="topic-tag" data-en="Fitness & Wellbeing" data-mm="ကျန်းမာရေး">Fitness & Wellbeing</span>
+        <span class="topic-tag" data-en="Power" data-mm="ကြံ့ခိုင်မှု">Power</span>
+        <span class="topic-tag" data-en="Art" data-mm="အနုပညာ">Art</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hr"><div class="hr-line"></div><div class="hr-dot"></div><div class="hr-line"></div></div>
+
+<!-- QUOTE -->
+<div id="quote">
+  <blockquote class="reveal" data-en='"Most men live lives of quiet desperation — not because the world will not give them more, but because they never sit still long enough to ask what they truly want."' data-mm='"လူအများစုသည် တိတ်ဆိတ်သောစိတ်ပျက်မှုဘဝများကို နေထိုင်ကြသည် — ကမ္ဘာသည် ပိုမိုမပေးသောကြောင့်မဟုတ်ဘဲ မိမိ၏ စစ်မှန်သောဆန္ဒများကို မမေးဘဲသောကြောင့်ဖြစ်သည်။"'>"Most men live lives of quiet desperation — not because the world will not give them more, but because they never sit still long enough to ask what they truly want."</blockquote>
+  <cite class="reveal d1" data-en="The Circle · Core Belief" data-mm="The Circle · အဓိကယုံကြည်ချက်">The Circle · Core Belief</cite>
+</div>
+
+<div class="hr"><div class="hr-line"></div><div class="hr-dot"></div><div class="hr-line"></div></div>
+
+<!-- FORMATS -->
+<div class="section-wrap bg-alt" id="formats">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="s-label" data-en="The Experience" data-mm="အတွေ့အကြုံ">The Experience</span>
+      <h2 class="s-title" data-en="Three ways to enter." data-mm="ဝင်ရောက်ရန် နည်းလမ်းသုံးမျိုး။">Three ways to enter.</h2>
+    </div>
+    <div class="formats-grid">
+      <div class="fmt reveal">
+        <span class="fmt-icon">🌙</span>
+        <h3 data-en="Evening Gathering" data-mm="ညနေ စုဝေးမှု">Evening Gathering</h3>
+        <p data-en="8–12 men. One theme. Three hours. No small talk." data-mm="ယောင်္ကျား ၈–၁၂ ဦး။ ခေါင်းစဉ်တစ်ခု။ သုံးနာရီ။">8–12 men. One theme. Three hours. No small talk.</p>
+        <div class="fmt-freq" data-en="Monthly · Curated" data-mm="လစဉ် · ရွေးချယ်ထားသော">Monthly · Curated</div>
+      </div>
+      <div class="fmt reveal d1">
+        <span class="fmt-icon">🏔</span>
+        <h3 data-en="Weekend Retreat" data-mm="စပတ်ဆုတ်ခွာမှု">Weekend Retreat</h3>
+        <p data-en="Two days away. Structured mornings. Fire at night. Space for real conclusions." data-mm="နှစ်ရက် ဝေးဝေးသို့သွားခြင်း။ မနက်ခင်း အစီအစဉ်ကျ။ ညဘက် မီးပုံ။">Two days away. Structured mornings. Fire at night. Space for real conclusions.</p>
+        <div class="fmt-freq" data-en="Quarterly · Immersive" data-mm="သုံးလတစ်ကြိမ် · နှစ်မြှုပ်">Quarterly · Immersive</div>
+      </div>
+      <div class="fmt reveal d2">
+        <span class="fmt-icon">🌍</span>
+        <h3 data-en="Annual Experience" data-mm="နှစ်စဉ် အတွေ့အကြုံ">Annual Experience</h3>
+        <p data-en="The flagship. A chosen location. A handpicked group. The one people remember." data-mm="အဓိကပွဲ။ ရွေးချယ်ထားသောနေရာ။ လက်ဖြင့်ရွေးထားသောအုပ်စု။">The flagship. A chosen location. A handpicked group. The one people remember.</p>
+        <div class="fmt-freq" data-en="Annual · Flagship" data-mm="နှစ်စဉ် · အဓိကပွဲ">Annual · Flagship</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hr"><div class="hr-line"></div><div class="hr-dot"></div><div class="hr-line"></div></div>
+
+<!-- JOIN -->
+<div class="section-wrap" id="join" style="text-align:center;">
+  <div class="reveal">
+    <span class="s-label" data-en="Join The Circle" data-mm="The Circle သို့ ပါဝင်ပါ">Join The Circle</span>
+    <h2 class="s-title" data-en="The room is waiting." data-mm="အခန်းသည် စောင့်နေသည်။">The room is waiting.</h2>
+    <p class="s-body" style="max-width:400px; margin: 0 auto 2.5rem;" data-en="Invitation only. Small groups. Leave your email and we will reach out when the next circle opens." data-mm="ဖိတ်ကြားချက်ဖြင့်သာ ဝင်ခွင့်ရှိသည်။ အုပ်စုငယ်များ။ သင်၏ email ထားခဲ့ပါ။">Invitation only. Small groups. Leave your email and we will reach out when the next circle opens.</p>
+    <div class="join-form">
+      <input type="email" id="emailInput" placeholder="your@email.com">
+      <button onclick="handleJoin(this)" data-en="Request" data-mm="လျှောက်ရန်">Request</button>
+    </div>
+    <p class="join-note" data-en="Invitation only · No spam" data-mm="ဖိတ်ကြားချက်ဖြင့်သာ · Spam မရှိ">Invitation only · No spam</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">THE CIRCLE</div>
+  <div class="footer-links">
+    <a href="#vision" data-en="Vision" data-mm="ရည်မှန်းချက်">Vision</a>
+    <a href="#values" data-en="Values" data-mm="တန်ဖိုးများ">Values</a>
+    <a href="#formats" data-en="Experience" data-mm="အတွေ့အကြုံ">Experience</a>
+    <a href="#join" data-en="Join" data-mm="ပါဝင်ရန်">Join</a>
+  </div>
+  <p>© 2025 The Circle · theonecircle.club</p>
+</footer>
+
+<script>
+  let lang = 'en';
+
+  function toggleLang() {
+    lang = lang === 'en' ? 'mm' : 'en';
+    document.getElementById('langFlag').textContent = lang === 'mm' ? '🇬🇧' : '🇲🇲';
+    document.getElementById('langLabel').textContent = lang === 'mm' ? 'English' : 'Myanmar';
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+      if (el.tagName === 'INPUT') { el.placeholder = val; return; }
+      el.innerHTML = val;
+    });
+  }
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Join
+  function handleJoin(btn) {
+    const input = document.getElementById('emailInput');
+    if (!input.value || !input.value.includes('@')) {
+      input.style.borderColor = 'rgba(200,70,70,0.5)'; return;
+    }
+    btn.textContent = lang === 'mm' ? 'ရရှိပြီ ✦' : 'Received ✦';
+    btn.style.background = '#1e5c32';
+    btn.style.color = '#fff';
+    input.disabled = true;
+    input.style.opacity = '0.5';
+  }
+</script>
+</body>
+</html>
