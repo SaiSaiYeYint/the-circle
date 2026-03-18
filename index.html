@@ -157,39 +157,39 @@ nav {
 @keyframes rise { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
 
 /* ── SECTION BASE ── */
-.wrap { max-width: 860px; margin: 0 auto; padding: 4.5rem 5vw; }
-.wrap.alt { max-width: 100%; padding: 4.5rem 5vw; background: var(--navy-2); }
-.wrap-inner { max-width: 860px; margin: 0 auto; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 5rem 5vw; }
+.wrap.alt { max-width: 100%; padding: 5rem 5vw; background: var(--navy-2); }
+.wrap-inner { max-width: 900px; margin: 0 auto; }
 
 .label {
   font-family: 'Raleway', sans-serif;
-  font-size: 0.56rem; letter-spacing: 0.38em; text-transform: uppercase;
+  font-size: 0.54rem; letter-spacing: 0.42em; text-transform: uppercase;
   font-weight: 500;
-  color: var(--gold); display: block; margin-bottom: 0.9rem;
+  color: var(--gold); display: block; margin-bottom: 0.8rem;
 }
 .heading {
   font-family: 'Cinzel', serif;
-  font-size: clamp(1.4rem, 3vw, 2.3rem);
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
   font-weight: 500; letter-spacing: 0.04em; line-height: 1.25;
   color: var(--white); margin-bottom: 1.5rem;
 }
 .body-text {
-  font-size: clamp(1.05rem, 1.7vw, 1.18rem);
-  font-weight: 400; line-height: 1.9; color: var(--cream-dim);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  font-weight: 400; line-height: 1.95; color: var(--cream-dim);
 }
 
 /* ── THIN RULE ── */
 .rule {
   display: flex; align-items: center; gap: 1.2rem;
-  max-width: 100px; margin: 0 auto; padding: 2.5rem 0;
+  max-width: 80px; margin: 0 auto; padding: 2rem 0;
 }
 .rule-line { flex: 1; height: 1px; background: var(--gold-line); }
 .rule-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); opacity: 0.5; }
 
 /* ── IDEAS LIST ── */
-.list { margin-top: 2.2rem; border-top: 1px solid rgba(212,168,67,0.1); }
+.list { margin-top: 2rem; border-top: 1px solid rgba(212,168,67,0.1); }
 .list-row {
-  display: flex; gap: 2rem; padding: 1.2rem 0;
+  display: flex; gap: 2rem; padding: 1.1rem 0;
   border-bottom: 1px solid rgba(212,168,67,0.06);
 }
 .list-mark {
@@ -197,7 +197,7 @@ nav {
   color: rgba(212,168,67,0.3); flex-shrink: 0; padding-top: 0.2rem; width: 24px;
 }
 .list-row p {
-  font-size: clamp(1rem, 1.7vw, 1.12rem);
+  font-size: clamp(0.98rem, 1.6vw, 1.1rem);
   font-weight: 400; line-height: 1.8; color: var(--cream-dim); font-style: italic;
 }
 .list-row strong { font-style: normal; font-weight: 500; color: var(--cream); }
@@ -206,8 +206,8 @@ nav {
 .vision-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2.8rem;
+  gap: 1.8rem;
+  margin-top: 2.5rem;
 }
 .vision-item {
   border-top: 1px solid var(--gold-line);
@@ -221,24 +221,25 @@ nav {
 }
 .vision-item p {
   font-size: 0.95rem; font-weight: 400;
-  line-height: 1.7; color: var(--cream-dim);
+  line-height: 1.75; color: var(--cream-dim);
 }
 
 /* ── VALUES ── */
 .values-section {
-  padding: 4.5rem 5vw;
+  padding: 5rem 5vw;
   background: var(--navy);
 }
 .values-label-wrap {
-  max-width: 860px; margin: 0 auto 2.2rem;
+  max-width: 960px; margin: 0 auto 2rem;
+  text-align: center;
 }
 .values-grid {
   display: grid; grid-template-columns: repeat(4,1fr);
-  gap: 1px; max-width: 860px; margin: 0 auto;
+  gap: 1px; max-width: 960px; margin: 0 auto;
 }
 .val {
   background: var(--navy-3);
-  padding: 2.8rem 2rem; position: relative; overflow: hidden;
+  padding: 2.8rem 2.2rem; position: relative; overflow: hidden;
   transition: background 0.3s;
 }
 .val:hover { background: #1d2a42; }
@@ -250,12 +251,13 @@ nav {
 .val:hover::after { transform: scaleX(1); }
 .val h3 {
   font-family: 'Cinzel', serif; font-size: 1.05rem;
-  font-weight: 600; letter-spacing: 0.06em; color: var(--gold);
-  margin-bottom: 0.8rem; line-height: 1.2;
+  font-weight: 600; letter-spacing: 0.04em; color: var(--gold);
+  margin-bottom: 0.9rem; line-height: 1.2;
 }
 .val p {
-  font-size: 0.98rem; font-weight: 400; line-height: 1.85; color: var(--cream-dim);
+  font-size: 0.9rem; font-weight: 400; line-height: 1.85; color: var(--cream-dim);
 }
+.val p strong { color: var(--cream); font-weight: 600; }
 
 /* ── TOPICS ── */
 .topics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
@@ -272,7 +274,7 @@ nav {
 /* ── NETWORK ── */
 .network-inner {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 6rem; align-items: center; max-width: 860px; margin: 0 auto;
+  gap: 6rem; align-items: center; max-width: 900px; margin: 0 auto;
 }
 .network-stat {
   display: flex; flex-direction: column; gap: 2rem;
@@ -299,9 +301,9 @@ nav {
 .faq-q {
   width: 100%; background: none; border: none; color: var(--cream);
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1.3rem 0; cursor: pointer; text-align: left;
-  font-family: 'Cinzel', serif; font-size: 0.85rem;
-  font-weight: 400; letter-spacing: 0.06em;
+  padding: 1.4rem 0; cursor: pointer; text-align: left;
+  font-family: 'Cinzel', serif; font-size: 0.88rem;
+  font-weight: 400; letter-spacing: 0.05em;
   transition: color 0.3s;
 }
 .faq-q:hover { color: var(--gold-light); }
@@ -312,15 +314,15 @@ nav {
 }
 .faq-item.open .faq-q .icon { transform: rotate(45deg); }
 .faq-a {
-  font-size: 1.08rem; font-weight: 400; line-height: 1.85;
+  font-size: 1rem; font-weight: 400; line-height: 1.85;
   color: var(--cream-dim); max-height: 0; overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
 }
-.faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.8rem; }
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.6rem; }
 
 /* ── JOIN ── */
 #join { text-align: center; }
-#join .heading { font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: 0.08em; }
+#join .heading { font-size: clamp(1.8rem, 4vw, 3.2rem); letter-spacing: 0.08em; }
 
 /* ── FOOTER ── */
 footer {
@@ -426,10 +428,10 @@ footer small {
   nav { padding: 1.3rem 5vw; }
   .nav-links { display: none; }
   .nav-right { display: none; }
-  .wrap { padding: 4.5rem 5vw; }
-  .wrap.alt { padding: 4.5rem 5vw; }
-  .values-section { padding: 4.5rem 0; }
-  .values-label-wrap { padding: 0 5vw 2rem; }
+  .wrap { padding: 4rem 5vw; }
+  .wrap.alt { padding: 4rem 5vw; }
+  .values-section { padding: 4rem 5vw; }
+  .values-label-wrap { text-align: left; }
   .vision-grid { grid-template-columns: 1fr 1fr; }
   .values-grid { grid-template-columns: 1fr 1fr; }
   .network-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -478,32 +480,37 @@ footer small {
   <div class="reveal">
     <span class="label">Our Vision</span>
     <h2 class="heading">The art of living.</h2>
-    <p class="body-text">We exist to make men more conscious of what's really happening — creating real growth, expanding masculine collective consciousness, and realizing the Truth.</p>
+    <p class="body-text">Making men more conscious of what's really happening — creating real growth, expanding masculine collective consciousness, and realizing the Truth.</p>
   </div>
-  <div class="vision-grid reveal d1">
+  <div class="reveal d1" style="margin-top:2.2rem;">
+    <h3 style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:500;letter-spacing:0.06em;color:var(--white);margin-bottom:0.8rem;">Go for the Real Thing.</h3>
+    <p class="body-text" style="font-style:italic;color:var(--cream-dim);margin-bottom:1rem;">Unapplied knowledge is no knowledge at all.</p>
+    <p class="body-text">Real world community. Exposure. Network. Mentorship. Your experience is your teacher — you are here to live it and share it by being yourself.</p>
+  </div>
+  <div class="vision-grid reveal d2">
     <div class="vision-item">
       <h4>Contribution over consumption.</h4>
-      <p>What you bring matters more than what you take.</p>
+      <p>Masculinity grows by helping others grow.</p>
     </div>
     <div class="vision-item">
       <h4>Share truth by living it.</h4>
-      <p>Closer to God. Aware of life itself.</p>
+      <p>Closer to God. Awareness of life itself.</p>
     </div>
     <div class="vision-item">
       <h4>No hierarchy.</h4>
-      <p>We are all learners and teachers. We are all the same.</p>
+      <p>We are all learners and teachers. We are all Human Being.</p>
+    </div>
+    <div class="vision-item">
+      <h4>The moment is the point.</h4>
+      <p>Life is this moment. Now is the only reality.</p>
     </div>
     <div class="vision-item">
       <h4>A practice ground and elite network.</h4>
       <p>Low-stake gathering. High-depth connection.</p>
     </div>
     <div class="vision-item">
-      <h4>The moment is the point.</h4>
-      <p>The Circle creates space for us to meet in this time.</p>
-    </div>
-    <div class="vision-item">
-      <h4>You shape it too.</h4>
-      <p>Every member has a voice. It belongs to everyone inside.</p>
+      <h4>Everything is growing.</h4>
+      <p>The community grows with every man inside it.</p>
     </div>
   </div>
 </div>
@@ -525,7 +532,7 @@ footer small {
       </div>
       <div class="stat">
         <div class="stat-num">Myanmar</div>
-        <p>To global</p>
+        <p>to Global</p>
       </div>
       <div class="stat">
         <div class="stat-num">Invite Only</div>
@@ -546,19 +553,19 @@ footer small {
   <div class="values-grid">
     <div class="val reveal">
       <h3>Authenticity</h3>
-      <p>Truth. Being honest. No performance. Uniqueness.</p>
+      <p>Truth. <strong>Being Honest.</strong><br>Uniqueness.</p>
     </div>
     <div class="val reveal d1">
       <h3>Openness</h3>
-      <p>Freedom. Being free. Trusting life.</p>
+      <p>Freedom. <strong>Being Free.</strong><br>Trusting Life.</p>
     </div>
     <div class="val reveal d2">
       <h3>Growth</h3>
-      <p>Change. Being vulnerable. Giving love.</p>
+      <p>Change. <strong>Being Vulnerable.</strong><br>Giving Love.</p>
     </div>
     <div class="val reveal d3">
       <h3>Purpose</h3>
-      <p>Knowing. Being happy. Meaning of life.</p>
+      <p>Knowing. <strong>Being Happy.</strong><br>Meaning of Life.</p>
     </div>
   </div>
 </div>
