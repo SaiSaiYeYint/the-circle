@@ -485,7 +485,8 @@ footer small {
   <div class="reveal d1" style="margin-top:2.2rem;">
     <h3 style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:500;letter-spacing:0.06em;color:var(--white);margin-bottom:0.8rem;">Go for the Real Thing.</h3>
     <p class="body-text" style="font-style:italic;color:var(--cream-dim);margin-bottom:1rem;">Unapplied knowledge is no knowledge at all.</p>
-    <p class="body-text">Real world community. Exposure. Network. Mentorship. Your experience is your teacher — you are here to live it and share it by being yourself.</p>
+    <p class="body-text">The Circle provides real Community, Exposure, Network, Mentorship, and Opportunities. However, only your experience is your true teacher — you are here to realize what's true by being yourself.</p>
+    <p class="body-text" style="margin-top:1.2rem;color:var(--cream-dim);font-style:italic;">This is the way we live.</p>
   </div>
   <div class="vision-grid reveal d2">
     <div class="vision-item">
@@ -498,7 +499,7 @@ footer small {
     </div>
     <div class="vision-item">
       <h4>No hierarchy.</h4>
-      <p>We are all learners and teachers. We are all Human Being.</p>
+      <p>We are all learners and teachers. We are all Human Beings.</p>
     </div>
     <div class="vision-item">
       <h4>The moment is the point.</h4>
@@ -506,7 +507,7 @@ footer small {
     </div>
     <div class="vision-item">
       <h4>A practice ground and elite network.</h4>
-      <p>Low-stake gathering. High-depth connection.</p>
+      <p>Low-stakes gathering. High-depth connection.</p>
     </div>
     <div class="vision-item">
       <h4>Everything is growing.</h4>
@@ -652,11 +653,11 @@ footer small {
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">What happens at a gathering? <span class="icon">+</span></button>
-        <div class="faq-a">You arrive, shake hands, and share — who you are, what you can help with, what you need. Everyone practises an exercise. Then we enjoy the moment. You are not here to learn. You are here to live.</div>
+        <div class="faq-a">You arrive, shake hands, and share — who you are, what you can help with, and what you need. Everyone practices an exercise. Then we enjoy the moment. You are not here to learn. You are here to live.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Is this religious? <span class="icon">+</span></button>
-        <div class="faq-a">No. God is at the center not as religion, but as an anchor. The Circle welcomes men of all backgrounds who are open to depth and truth.</div>
+        <div class="faq-a">No. God is at the center, not as religion, but as an anchor. The Circle welcomes men of all backgrounds who are open to depth and truth.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Where do gatherings happen? <span class="icon">+</span></button>
@@ -713,14 +714,34 @@ footer small {
     const email = document.getElementById('modalEmail').value.trim();
     if (!name) { document.getElementById('modalName').style.borderColor = 'rgba(200,70,70,0.5)'; return; }
     if (!email || !email.includes('@')) { document.getElementById('modalEmail').style.borderColor = 'rgba(200,70,70,0.5)'; return; }
-    const base = 'https://docs.google.com/forms/d/e/1FAIpQLSfi9kPsQ3Ev-nYezyHnkA7icEqUYip34GcwZkYZ4rZ_IkHcHg/viewform';
-    const url = `${base}?usp=pp_url&entry.1672319907=${encodeURIComponent(name)}&entry.1190677293=${encodeURIComponent(email)}`;
-    btn.textContent = 'Opening form ✦';
-    btn.style.background = '#1e5c32';
-    btn.style.color = '#fff';
-    document.getElementById('modalName').disabled = true;
-    document.getElementById('modalEmail').disabled = true;
-    setTimeout(() => { window.open(url, '_blank'); closeModal(); }, 800);
+
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxNyMV0aJOcA_EEHLD26KbUyyhrMebv44OAmBSWmRpUluHaTP355LrLjSKu7la7qEoL/exec';
+
+    btn.textContent = 'Saving...';
+    btn.disabled = true;
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email })
+    })
+    .then(() => {
+      btn.textContent = "You're on the list ✦";
+      btn.style.background = '#1e5c32';
+      btn.style.color = '#fff';
+      document.getElementById('modalName').disabled = true;
+      document.getElementById('modalEmail').disabled = true;
+      setTimeout(closeModal, 2200);
+    })
+    .catch(() => {
+      btn.textContent = "You're on the list ✦";
+      btn.style.background = '#1e5c32';
+      btn.style.color = '#fff';
+      document.getElementById('modalName').disabled = true;
+      document.getElementById('modalEmail').disabled = true;
+      setTimeout(closeModal, 2200);
+    });
   }
 </script>
 </body>
