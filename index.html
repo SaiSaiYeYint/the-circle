@@ -9,17 +9,17 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:       #0b1120;
-  --navy-2:     #111827;
-  --navy-3:     #172033;
-  --gold:       #d4a843;
-  --gold-light: #e8c06a;
-  --gold-line:  rgba(212,168,67,0.22);
-  --gold-soft:  rgba(212,168,67,0.09);
-  --cream:      #f0e6d0;
-  --cream-dim:  rgba(240,230,208,0.55);
-  --cream-faint:rgba(240,230,208,0.18);
-  --white:      #ffffff;
+  --navy:       #111111;
+  --navy-2:     #181818;
+  --navy-3:     #1f1f1f;
+  --gold:       #c9a84c;
+  --gold-light: #dfc278;
+  --gold-line:  rgba(201,168,76,0.2);
+  --gold-soft:  rgba(201,168,76,0.08);
+  --cream:      #c0c0c0;
+  --cream-dim:  rgba(192,192,192,0.52);
+  --cream-faint:rgba(192,192,192,0.14);
+  --white:      #f0f0f0;
 }
 
 html { scroll-behavior: smooth; }
@@ -67,7 +67,7 @@ nav {
   text-align: center;
   padding: 8rem 4vw 5rem;
   position: relative; overflow: hidden;
-  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(20,35,65,0.9) 0%, var(--navy) 70%);
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(38,30,14,0.85) 0%, var(--navy) 70%);
 }
 
 /* subtle grid lines */
@@ -75,8 +75,8 @@ nav {
   content: '';
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(212,168,67,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212,168,67,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
   background-size: 80px 80px;
   pointer-events: none;
 }
@@ -90,9 +90,9 @@ nav {
   position: absolute; border-radius: 50%;
   animation: breathe 8s ease-in-out infinite;
 }
-.ring:nth-child(1){ width:220px;height:220px;border:1px solid rgba(212,168,67,0.2);animation-delay:0s;}
-.ring:nth-child(2){ width:440px;height:440px;border:1px solid rgba(212,168,67,0.1);animation-delay:2s;}
-.ring:nth-child(3){ width:680px;height:680px;border:1px solid rgba(212,168,67,0.05);animation-delay:4s;}
+.ring:nth-child(1){ width:220px;height:220px;border:1px solid rgba(201,168,76,0.18);animation-delay:0s;}
+.ring:nth-child(2){ width:440px;height:440px;border:1px solid rgba(201,168,76,0.08);animation-delay:2s;}
+.ring:nth-child(3){ width:680px;height:680px;border:1px solid rgba(201,168,76,0.04);animation-delay:4s;}
 @keyframes breathe{
   0%,100%{transform:scale(1);opacity:1}
   50%{transform:scale(1.025);opacity:0.6}
@@ -157,8 +157,8 @@ nav {
 @keyframes rise { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
 
 /* ── SECTION BASE ── */
-.wrap { max-width: 900px; margin: 0 auto; padding: 5rem 5vw; }
-.wrap.alt { max-width: 100%; padding: 5rem 5vw; background: var(--navy-2); }
+.wrap { max-width: 900px; margin: 0 auto; padding: 4rem 5vw; }
+.wrap.alt { max-width: 100%; padding: 4rem 5vw; background: var(--navy-2); }
 .wrap-inner { max-width: 900px; margin: 0 auto; }
 
 .label {
@@ -171,7 +171,7 @@ nav {
   font-family: 'Cinzel', serif;
   font-size: clamp(1.4rem, 3vw, 2.4rem);
   font-weight: 500; letter-spacing: 0.04em; line-height: 1.25;
-  color: var(--white); margin-bottom: 1.5rem;
+  color: var(--white); margin-bottom: 1.2rem;
 }
 .body-text {
   font-size: clamp(1rem, 1.6vw, 1.15rem);
@@ -181,7 +181,7 @@ nav {
 /* ── THIN RULE ── */
 .rule {
   display: flex; align-items: center; gap: 1.2rem;
-  max-width: 80px; margin: 0 auto; padding: 2rem 0;
+  max-width: 80px; margin: 0 auto; padding: 1rem 0;
 }
 .rule-line { flex: 1; height: 1px; background: var(--gold-line); }
 .rule-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); opacity: 0.5; }
@@ -207,7 +207,7 @@ nav {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.8rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 .vision-item {
   border-top: 1px solid var(--gold-line);
@@ -226,7 +226,7 @@ nav {
 
 /* ── VALUES ── */
 .values-section {
-  padding: 5rem 5vw;
+  padding: 4rem 5vw;
   background: var(--navy);
 }
 .values-label-wrap {
@@ -242,7 +242,7 @@ nav {
   padding: 2.8rem 2.2rem; position: relative; overflow: hidden;
   transition: background 0.3s;
 }
-.val:hover { background: #1d2a42; }
+.val:hover { background: #2a2a2a; }
 .val::after {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(to right, transparent, var(--gold), transparent);
@@ -266,7 +266,7 @@ nav {
   font-size: 0.57rem; letter-spacing: 0.16em; text-transform: uppercase;
   font-weight: 400;
   color: var(--cream-dim);
-  border: 1px solid rgba(240,230,208,0.1);
+  border: 1px solid rgba(192,192,192,0.1);
   padding: 0.45rem 1.1rem; transition: all 0.3s;
 }
 .topic:hover { border-color: var(--gold-line); color: var(--gold); }
@@ -296,8 +296,8 @@ nav {
 }
 
 /* ── FAQ ── */
-.faq-list { margin-top: 2rem; border-top: 1px solid rgba(212,168,67,0.1); }
-.faq-item { border-bottom: 1px solid rgba(212,168,67,0.06); }
+.faq-list { margin-top: 2rem; border-top: 1px solid rgba(201,168,76,0.1); }
+.faq-item { border-bottom: 1px solid rgba(201,168,76,0.06); }
 .faq-q {
   width: 100%; background: none; border: none; color: var(--cream);
   display: flex; justify-content: space-between; align-items: center;
@@ -326,7 +326,7 @@ nav {
 
 /* ── FOOTER ── */
 footer {
-  background: rgba(8,13,24,0.75);
+  background: rgba(6,6,6,0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid rgba(212,168,67,0.06);
@@ -344,13 +344,13 @@ footer {
   font-family: 'Raleway', sans-serif;
   font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase;
   font-weight: 400;
-  color: rgba(240,230,208,0.28); text-decoration: none; transition: color 0.3s;
+  color: rgba(192,192,192,0.25); text-decoration: none; transition: color 0.3s;
 }
 .footer-links a:hover { color: var(--gold); }
 footer small {
   font-family: 'Raleway', sans-serif;
   font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase;
-  font-weight: 400; color: rgba(240,230,208,0.15);
+  font-weight: 400; color: rgba(192,192,192,0.12);
 }
 
 /* ── REVEAL ── */
@@ -361,7 +361,7 @@ footer small {
 /* ── MODAL ── */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 500;
-  background: rgba(8,13,24,0.7);
+  background: rgba(6,6,6,0.78);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   display: flex; align-items: center; justify-content: center;
@@ -373,7 +373,7 @@ footer small {
   opacity: 1; pointer-events: all;
 }
 .modal-box {
-  background: rgba(17,24,39,0.85);
+  background: rgba(20,20,20,0.96);
   border: 1px solid rgba(212,168,67,0.18);
   padding: 3rem 2.8rem;
   max-width: 420px; width: 100%;
@@ -415,12 +415,12 @@ footer small {
   font-size: 0.75rem; letter-spacing: 0.04em;
   outline: none; transition: border-color 0.3s; width: 100%;
 }
-.modal-form input::placeholder { color: rgba(240,230,208,0.25); }
-.modal-form input:focus { border-color: rgba(212,168,67,0.45); }
+.modal-form input::placeholder { color: rgba(192,192,192,0.2); }
+.modal-form input:focus { border-color: rgba(201,168,76,0.4); }
 .modal-note {
   font-family: 'Raleway', sans-serif;
   font-size: 0.52rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: rgba(240,230,208,0.2); margin-top: 1rem; text-align: center;
+  color: rgba(192,192,192,0.17); margin-top: 1rem; text-align: center;
 }
 
 /* ── RESPONSIVE ── */
@@ -428,13 +428,13 @@ footer small {
   nav { padding: 1.3rem 5vw; }
   .nav-links { display: none; }
   .nav-right { display: none; }
-  .wrap { padding: 4rem 5vw; }
-  .wrap.alt { padding: 4rem 5vw; }
-  .values-section { padding: 4rem 5vw; }
+  .wrap { padding: 3rem 5vw; }
+  .wrap.alt { padding: 3rem 5vw; }
+  .values-section { padding: 3rem 5vw; }
   .values-label-wrap { text-align: left; }
   .vision-grid { grid-template-columns: 1fr 1fr; }
   .values-grid { grid-template-columns: 1fr 1fr; }
-  .network-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .network-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   footer { flex-direction: column; text-align: center; }
   .footer-links { justify-content: center; }
 }
@@ -450,7 +450,7 @@ footer small {
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">THE CIRCLE</a>
-  <a href="#join" class="nav-right">Join</a>
+  <a href="#join" class="nav-right">Apply Now</a>
 </nav>
 
 <!-- HERO -->
@@ -467,7 +467,7 @@ footer small {
   </h1>
   <p class="hero-sub">An Exclusive Community for Modern Masculine Growth and One Truth.</p>
   <div class="hero-cta">
-    <a href="#join" class="btn-primary">Join the Waitlist</a>
+    <a href="https://www.notion.so/11dc862518784802a2dab12b6ab6e63f?pvs=106" target="_blank" class="btn-primary">Apply for Membership</a>
   </div>
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
@@ -475,56 +475,42 @@ footer small {
   </div>
 </section>
 
-<!-- PURPOSE -->
+<!-- OUR VISION -->
 <div class="wrap" id="purpose">
   <div class="reveal">
     <span class="label">Our Vision</span>
     <h2 class="heading">The art of living.</h2>
     <p class="body-text">Making men more conscious of what's really happening — creating real growth, expanding masculine collective consciousness, and realizing the Truth.</p>
   </div>
-  <div class="reveal d1" style="margin-top:2.2rem;">
+  <div class="reveal d1" style="margin-top:1.6rem;">
     <h3 style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:500;letter-spacing:0.06em;color:var(--white);margin-bottom:0.8rem;">Go for the Real Thing.</h3>
     <p class="body-text" style="font-style:italic;color:var(--cream-dim);margin-bottom:1rem;">Unapplied knowledge is no knowledge at all.</p>
     <p class="body-text">The Circle provides real Community, Exposure, Network, Mentorship, and Opportunities. However, only your experience is your true teacher — you are here to realize what's true by being yourself.</p>
-    <p class="body-text" style="margin-top:1.2rem;color:var(--cream-dim);font-style:italic;">This is the way we live.</p>
-  </div>
-  <div class="vision-grid reveal d2">
-    <div class="vision-item">
-      <h4>Contribution over consumption.</h4>
-      <p>Masculinity grows by helping others grow.</p>
-    </div>
-    <div class="vision-item">
-      <h4>Share truth by living it.</h4>
-      <p>Closer to God. Awareness of life itself.</p>
-    </div>
-    <div class="vision-item">
-      <h4>No hierarchy.</h4>
-      <p>We are all learners and teachers. We are all Human Beings.</p>
-    </div>
-    <div class="vision-item">
-      <h4>The moment is the point.</h4>
-      <p>Life is this moment. Now is the only reality.</p>
-    </div>
-    <div class="vision-item">
-      <h4>A practice ground and elite network.</h4>
-      <p>Low-stakes gathering. High-depth connection.</p>
-    </div>
-    <div class="vision-item">
-      <h4>Everything is growing.</h4>
-      <p>The community grows with every man inside it.</p>
-    </div>
+    <p class="body-text" style="margin-top:1.2rem;color:var(--cream-dim);font-style:italic;">This is a way of being.</p>
   </div>
 </div>
 
 <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line"></div></div>
 
-<!-- NETWORK -->
-<div class="wrap alt" id="network">
+<!-- WHY WE BUILD THE CIRCLE -->
+<div class="wrap alt" id="why">
+  <div class="wrap-inner">
+    <div class="reveal">
+      <span class="label">Why We Build The Circle</span>
+      <h2 class="heading">We exist to be a light for younger entrepreneurs in the modern world.</h2>
+      <p class="body-text">Stop learning from screens. Start living your life. Self-education doesn't have to be lonely or boring. It should be challenging and fun.</p>
+      <p class="body-text" style="margin-top:1.2rem;">We create connections with elite minds for the next generation of entrepreneurs.</p>
+    </div>
+  </div>
+</div>
+
+<!-- OUR EVENT / NETWORK -->
+<div class="wrap alt" id="network" style="border-top:1px solid rgba(201,168,76,0.08);">
   <div class="network-inner">
     <div class="reveal">
-      <span class="label">Our Network</span>
+      <span class="label">Our Event</span>
       <h2 class="heading">Private events like no others.</h2>
-      <p class="body-text">We host private networking events offering global experience and exclusive opportunities for members to be with entrepreneurs from all over the world.</p>
+      <p class="body-text">We host private networking events offering global experience and exclusive opportunities for members to be with entrepreneurs from all over the world. Invite-only in-person gatherings with the most elite minds.</p>
     </div>
     <div class="network-stat reveal d1">
       <div class="stat">
@@ -545,10 +531,10 @@ footer small {
 
 <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line"></div></div>
 
-<!-- VALUES -->
+<!-- CORE VALUES -->
 <div class="values-section" id="values">
   <div class="values-label-wrap reveal">
-    <span class="label">Core Values</span>
+    <span class="label">Core Principles</span>
     <h2 class="heading">What we stand for.</h2>
   </div>
   <div class="values-grid">
@@ -571,45 +557,81 @@ footer small {
   </div>
 </div>
 
-<!-- TOPICS -->
-<div class="wrap" id="topics" style="padding-top:2.5rem;">
+<!-- HOW WE LIVE -->
+<div class="wrap" id="howwelive" style="border-top:1px solid rgba(201,168,76,0.08);">
   <div class="reveal">
-    <span class="label">We talk about</span>
+    <span class="label">How We Live</span>
+    <h2 class="heading">More than a standard.<br>A way of being.</h2>
+  </div>
+  <div class="vision-grid reveal d1">
+    <div class="vision-item">
+      <h4>Contribution over consumption.</h4>
+      <p>Giving is the path.</p>
+    </div>
+    <div class="vision-item">
+      <h4>Share truth by living it.</h4>
+      <p>Truth over performance.</p>
+    </div>
+    <div class="vision-item">
+      <h4>Presence over performance.</h4>
+      <p>The moment is the point. Every experience is the practice.</p>
+    </div>
+    <div class="vision-item">
+      <h4>Awareness is the goal.</h4>
+      <p>To become conscious of what is actually happening — within and around you.</p>
+    </div>
+    <div class="vision-item">
+      <h4>Teach what you know. Learn what you don't.</h4>
+      <p>The one who thinks he has nothing to learn has already stopped growing. Every man is both teacher and student.</p>
+    </div>
+    <div class="vision-item">
+      <h4>A living culture.</h4>
+      <p>The culture grows, adapts, and is shaped by community.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TOPICS -->
+<div class="wrap" id="topics" style="padding-top:4rem;border-top:1px solid rgba(201,168,76,0.08);">
+  <div class="reveal">
+    <span class="label">We Talk About</span>
     <div class="topics">
       <span class="topic">Masculinity</span>
-    <span class="topic">Spiritual / God</span>
-    <span class="topic">Life</span>
-    <span class="topic">Love</span>
-    <span class="topic">Truth</span>
-    <span class="topic">Belief</span>
-    <span class="topic">Communications</span>
-    <span class="topic">Awareness</span>
-    <span class="topic">Self Improvement</span>
-    <span class="topic">Growth</span>
-    <span class="topic">Purpose</span>
-    <span class="topic">Power</span>
-    <span class="topic">Business</span>
-    <span class="topic">Relationships</span>
-    <span class="topic">Joy & Happiness</span>
-    <span class="topic">Fitness & Wellbeing</span>
-    <span class="topic">Books</span>
-    <span class="topic">Art</span>
-    <span class="topic">Lust</span>
-    <span class="topic">Drugs</span>
-    <span class="topic">Money</span>
-    <span class="topic">Women</span>
-    <span class="topic">Everything</span>
+      <span class="topic">Spiritual / God</span>
+      <span class="topic">Life</span>
+      <span class="topic">Love</span>
+      <span class="topic">Truth</span>
+      <span class="topic">Belief</span>
+      <span class="topic">Communications</span>
+      <span class="topic">Awareness</span>
+      <span class="topic">Self Improvement</span>
+      <span class="topic">Growth</span>
+      <span class="topic">Purpose</span>
+      <span class="topic">Power</span>
+      <span class="topic">Business</span>
+      <span class="topic">Relationships</span>
+      <span class="topic">Joy & Happiness</span>
+      <span class="topic">Fitness & Wellbeing</span>
+      <span class="topic">Books</span>
+      <span class="topic">Art</span>
+      <span class="topic">Lust</span>
+      <span class="topic">Drugs</span>
+      <span class="topic">Money</span>
+      <span class="topic">Women</span>
+      <span class="topic">Everything</span>
     </div>
   </div>
 </div>
 
 <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line"></div></div>
+
+<!-- JOIN -->
 <div class="wrap alt" id="join" style="text-align:center;">
   <div class="reveal">
     <span class="label">Join The Circle</span>
     <h2 class="heading">The room is waiting.</h2>
-    <p class="body-text" style="max-width:360px;margin:0 auto 2rem;">Be the first to know about our events and updates.</p>
-    <button class="btn-primary" onclick="openModal()">Join the Waitlist</button>
+    <p class="body-text" style="max-width:400px;margin:0 auto 2rem;">Our masterminds are invitation only. Only for those who are ready for real growth.</p>
+    <a href="https://www.notion.so/11dc862518784802a2dab12b6ab6e63f?pvs=106" target="_blank" class="btn-primary">Apply for Membership</a>
   </div>
 </div>
 
@@ -618,12 +640,12 @@ footer small {
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <p class="label" style="margin-bottom:0.8rem;">The Circle</p>
-    <h3 class="modal-heading">Join the Waitlist</h3>
-    <p class="modal-sub">Be the first to know about our events and updates.</p>
+    <h3 class="modal-heading">Apply for Membership</h3>
+    <p class="modal-sub">Invitation only. We will reach out personally when the time is right.</p>
     <div class="modal-form">
       <input type="text" id="modalName" placeholder="Your name" />
       <input type="email" id="modalEmail" placeholder="Your email" />
-      <button class="btn-primary" style="width:100%;justify-content:center;" onclick="submitModal(this)">Join the Waitlist</button>
+      <button class="btn-primary" style="width:100%;justify-content:center;" onclick="submitModal(this)">Submit Application</button>
     </div>
     <p class="modal-note">Invitation only · No spam</p>
   </div>
@@ -640,28 +662,28 @@ footer small {
     </div>
     <div class="faq-list reveal d1">
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What is The Circle? <span class="icon">+</span></button>
-        <div class="faq-a">The Circle is an exclusive, invitation-only men's community built on truth, presence, and real brotherhood. We are entrepreneurs, artists, and leaders who gather to grow — not just in business, but in life.</div>
+        <button class="faq-q" onclick="toggleFaq(this)">Membership or Mastermind? <span class="icon">+</span></button>
+        <div class="faq-a">You apply for membership. You will be invited to a private mastermind event once you are a member. Mastermind events are for members only.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How do I join? <span class="icon">+</span></button>
-        <div class="faq-a">Membership is by invitation only. Join the waitlist and we will reach out personally when a spot opens. Every member is carefully selected.</div>
+        <button class="faq-q" onclick="toggleFaq(this)">What is the price of membership? <span class="icon">+</span></button>
+        <div class="faq-a">You don't pay for membership. You pay for a seat at a two-day mastermind event, if you are invited. You become a member once you attend one of our gatherings. Details will be in your invitation.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Who is this for? <span class="icon">+</span></button>
-        <div class="faq-a">Men in transition. Those seeking purpose, depth, and real connection. Entrepreneurs, leaders, and artists who want more — not just success, but meaning.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What happens at a gathering? <span class="icon">+</span></button>
-        <div class="faq-a">You arrive, shake hands, and share — who you are, what you can help with, and what you need. Everyone practices an exercise. Then we enjoy the moment. You are not here to learn. You are here to live.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Is this religious? <span class="icon">+</span></button>
-        <div class="faq-a">No. God is at the center, not as religion, but as an anchor. The Circle welcomes men of all backgrounds who are open to depth and truth.</div>
+        <div class="faq-a">Those seeking purpose, depth, and real connection. Entrepreneurs, leaders, artists, builders, and thinkers who value truth.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Where do gatherings happen? <span class="icon">+</span></button>
-        <div class="faq-a">Locations are shared with confirmed members. Our vision is global — intimate gatherings in every major city, rooted in the same values.</div>
+        <div class="faq-a">Currently Myanmar and Thailand, but we are going global.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is this a self-help group or a business mastermind? <span class="icon">+</span></button>
+        <div class="faq-a">Neither. And both. The Circle exists where personal depth and professional ambition meet. Men who grow on the inside tend to build better on the outside. We are not here to separate the two.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How is this different from a networking event? <span class="icon">+</span></button>
+        <div class="faq-a">Common networking events and masterminds are transactional — you learn from people who walk the path, you get value from a speaker's experience and keynotes on certain topics. Here, you learn from your own experience in the moment and get a chance to observe how others actually live.</div>
       </div>
     </div>
   </div>
@@ -671,10 +693,12 @@ footer small {
 <footer>
   <div class="footer-logo">THE CIRCLE</div>
   <div class="footer-links">
-    <a href="#purpose">Purpose</a>
-    <a href="#network">Network</a>
+    <a href="#purpose">Vision</a>
+    <a href="#why">Why</a>
+    <a href="#network">Events</a>
     <a href="#values">Values</a>
-    <a href="#join">Join</a>
+    <a href="#howwelive">How We Live</a>
+    <a href="#join">Apply</a>
     <a href="#faq">FAQ</a>
   </div>
   <small>© 2025 The Circle · theonecircle.club</small>
@@ -717,7 +741,7 @@ footer small {
 
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxNyMV0aJOcA_EEHLD26KbUyyhrMebv44OAmBSWmRpUluHaTP355LrLjSKu7la7qEoL/exec';
 
-    btn.textContent = 'Saving...';
+    btn.textContent = 'Submitting...';
     btn.disabled = true;
 
     fetch(SCRIPT_URL, {
@@ -727,20 +751,12 @@ footer small {
       body: JSON.stringify({ name, email })
     })
     .then(() => {
-      btn.textContent = "You're on the list ✦";
-      btn.style.background = '#1e5c32';
-      btn.style.color = '#fff';
-      document.getElementById('modalName').disabled = true;
-      document.getElementById('modalEmail').disabled = true;
-      setTimeout(closeModal, 2200);
+      closeModal();
+      window.open('https://www.notion.so/11dc862518784802a2dab12b6ab6e63f?pvs=106', '_blank');
     })
     .catch(() => {
-      btn.textContent = "You're on the list ✦";
-      btn.style.background = '#1e5c32';
-      btn.style.color = '#fff';
-      document.getElementById('modalName').disabled = true;
-      document.getElementById('modalEmail').disabled = true;
-      setTimeout(closeModal, 2200);
+      closeModal();
+      window.open('https://www.notion.so/11dc862518784802a2dab12b6ab6e63f?pvs=106', '_blank');
     });
   }
 </script>
